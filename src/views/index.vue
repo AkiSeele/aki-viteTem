@@ -1,24 +1,35 @@
 <template>
-  <div>
-    <h1 class="test">首页index</h1>
-    <h2>Store： {{ userStore.name }}</h2>
-    <SvgIcon name="genshin" style="width: 50px; height: 50px" />
-    <n-button type="info" @click="lickLogin"> 跳转到登陆页面 </n-button>
+  <div class="warp">
+    <div class="warp_header" style="height: 20%"></div>
+    <div class="warp_center" style="height: 40%"></div>
+    <div class="warp_footer" style="height: 40%"></div>
   </div>
 </template>
 
-<script setup lang="ts">
-import { useUserStore } from "@/store/user";
-import SvgIcon from "@/components/SvgIcon.vue";
-const userStore = useUserStore();
-const router = useRouter();
-function lickLogin() {
-  router.push("/login");
-}
-</script>
+<script lang="ts"></script>
 
-<style scoped lang="scss">
-.test {
-  color: $test-color;
+<style lang="scss" scoped>
+.n-card {
+  width: 100%;
+  height: 100%;
+}
+.warp {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  &_header {
+    margin-top: 0 !important;
+  }
+  &_footer {
+    margin-bottom: 0 !important;
+  }
+  &_header,
+  &_center,
+  &_footer {
+    margin: 10px 0;
+    box-sizing: border-box;
+    width: 100%;
+    background: #fff;
+  }
 }
 </style>

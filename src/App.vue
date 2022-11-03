@@ -1,12 +1,14 @@
 <template>
   <!-- 放置路由容器 -->
-  <RouterView />
-  <HelloWorldVue />
+  <div id="app">
+    <RouterView />
+  </div>
+  
 </template>
 
 <script setup lang="ts">
-import HelloWorldVue from './components/HelloWorld.vue';
 
 </script>
 
-<style scoped></style>
+<style scoped>
+</style>
