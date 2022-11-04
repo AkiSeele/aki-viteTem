@@ -1,19 +1,23 @@
 <template>
-  <div class="warp">
-    <div class="warp_header" style="height: 20%"></div>
-    <div class="warp_center" style="height: 40%"></div>
-    <div class="warp_footer" style="height: 40%"></div>
+  <div class="warpS">
+    <div class="warpS_header" style="height: 20%"></div>
+    <div class="warpS_center" style="height: 40%"></div>
+    <div class="warpS_footer" style="height: 40%"></div>
   </div>
 </template>
 
-<script lang="ts"></script>
+<script lang="ts">
+
+</script>
 
 <style lang="scss" scoped>
 .n-card {
   width: 100%;
   height: 100%;
 }
-.warp {
+.warpS {
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

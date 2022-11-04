@@ -1,7 +1,7 @@
 <template>
-  <div class="warp">
+  <!-- <div class="warp"> -->
     <n-data-table :columns="columns" :data="data" />
-  </div>
+  <!-- </div> -->
 </template>
 
 <script lang="ts" setup>

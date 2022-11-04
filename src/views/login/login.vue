@@ -1,19 +1,22 @@
 <template>
-  <div v-if="userData">
-    <img :src="userData.avatarUrl" style="width: 100px;height: 100px;border-radius: 50%;" />
-    <h1 class="test">{{ userData.nickname }}</h1>
-    <div>{{ userData.signature }}</div>
+  <div v-if="StoreUser.name">
+    <img :src="StoreUser.imgUrl" style="width: 100px;height: 100px;border-radius: 50%;" />
+    <h1 class="test">{{ StoreUser.name }}</h1>
+    <div>{{ StoreUser.name }}</div>
   </div>
   <div>
-    <input v-model="loginForm.phone" />
-    <input v-model="loginForm.password" type="password" />
+    <n-input v-model:value="loginForm.phone" placeholder="输入姓名" />
+    <n-input v-model:value="loginForm.password" type="password" show-password-on="mousedown"/>
   </div>
 
-  <button @click="Login">登录</button>
+  <n-button @click="Login">登录</n-button>
 </template>
 
 <script setup lang="ts">
 import { userAkiStore } from "@/api/test/login";
+import router from "@/router";
+import { useUserStore } from "@/store/user";
+import path from "path";
 
 const loginForm = reactive({
   phone: "",
@@ -21,12 +24,15 @@ const loginForm = reactive({
 });
 
 const StoreLing = userAkiStore();
-const userData = ref()
+const StoreUser = useUserStore();
 
 async function GetDateShang(data: LoginAki) {
   return await StoreLing.userLogin(data)
     .then((res) => {
-      userData.value = res.data.profile
+      StoreUser.updateName(res.data.profile.nickname,res.data.profile.avatarUrl)
+      if(res.data.code === 200) {
+        router.push({path: '/',})
+      }
     })
     .then((err) => {
       return err;
