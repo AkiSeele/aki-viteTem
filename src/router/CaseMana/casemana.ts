@@ -28,7 +28,6 @@ const CaseManaRouter = {
       name: "Report",
       label: "案件上报",
       component: () => import("@/views/casemana/report.vue"),
-      icon: renderIcon(LogoElectron),
       meta: {
         hide: true,
         title: "案件上报",
@@ -39,7 +38,6 @@ const CaseManaRouter = {
       name: "CaseList",
       label: "全部案件列表",
       component: () => import("@/views/casemana/allcases/allcases.vue"),
-      icon: renderIcon(BarcodeOutline),
       meta: {
         hide: true,
         title: "测试页面列表",

@@ -83,9 +83,17 @@ button:focus-visible {
 }
 
 .warp {
-  padding: 20px;
+  padding: 10px;
   box-sizing: border-box;
   width: 100%;
-  height: calc(100vh - 50px);
+  height: calc(100vh - 65px - 38px);
   background-color: #f0f2f5;
+}
+
+.v-icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  font-size: 1em;
+  color: red;
 }

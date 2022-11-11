@@ -14,9 +14,8 @@
 
 <script setup lang="ts">
 import { userAkiStore } from "@/api/test/login";
-import router from "@/router";
 import { useUserStore } from "@/store/user";
-import path from "path";
+import router from "@/router";
 
 const loginForm = reactive({
   phone: "",
@@ -26,15 +25,22 @@ const loginForm = reactive({
 const StoreLing = userAkiStore();
 const StoreUser = useUserStore();
 
+const loadingBar = useLoadingBar()
+// const message = useMessage()
 async function GetDateShang(data: LoginAki) {
+  loadingBar.start()
   return await StoreLing.userLogin(data)
     .then((res) => {
+      loadingBar.finish()
       StoreUser.updateName(res.data.profile.nickname,res.data.profile.avatarUrl)
       if(res.data.code === 200) {
-        router.push({path: '/',})
+        router.replace({path: '/',})
+      } else {
+        // message.warning('...')
       }
     })
     .then((err) => {
+      loadingBar.error()
       return err;
     });
 }

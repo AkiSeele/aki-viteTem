@@ -1,4 +1,6 @@
 import axios from "axios";
+// import { useMessage } from "naive-ui";
+const message = useMessage();
 
 const AxiosToken = axios.create({
   // `baseURL` 将自动加在 `url` 前面，除非 `url` 是一个绝对 URL。
@@ -27,14 +29,15 @@ AxiosToken.interceptors.response.use(
   (response) => {
     // 2xx 范围内的状态码都会触发该函数。
     // 对响应数据做点什么
-    console.log('响应码：', response.status, "响应成功");
+    console.log("响应码：", response.status, "响应成功");
     return response;
   },
   (error) => {
     // 超出 2xx 范围的状态码都会触发该函数。
     // 对响应错误做点什么
-    console.log(error);
-    
+    // if (error.request.status === 500) {
+    window.$message.error(error.message);
+    // }
     return Promise.reject(error);
   }
 );

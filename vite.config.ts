@@ -32,24 +32,25 @@ export default defineConfig({
       ], // 自动导入vue、vue-router、pinia相关函数
       dts: "src/auto-import.d.ts", // 生成 `auto-import.d.ts` 全局声明
     }),
-    Icons({
-      // scale: 1, // 缩放
-      compiler: 'vue3', // 编译方式
-      // defaultClass: '', // 默认类名
-      // defaultStyle: '', // 默认样式
-      autoInstall: true
-      // jsx: 'react' // jsx支持
-    }),
     Components({
       resolvers: [
         NaiveUiResolver(),
+        // 新增的
         IconsResolver({
-          prefix: 'icon', // 自动引入的Icon组件统一前缀，默认为 i，设置false为不需要前缀
+          prefix: "icon", // 自动引入的Icon组件统一前缀，默认为 i，设置false为不需要前缀
           // {prefix}-{collection}-{icon} 使用组件解析器时，您必须遵循名称转换才能正确推断图标。
           // alias: { park: 'icon-park' } 集合的别名
-          enabledCollections: ['ep'] // 这是可选的，默认启用 Iconify 支持的所有集合['mdi']
+          enabledCollections: ["ep"], // 这是可选的，默认启用 Iconify 支持的所有集合['mdi']
         }),
       ],
+    }),
+    Icons({
+      // scale: 1, // 缩放
+      compiler: "vue3", // 编译方式
+      // defaultClass: '', // 默认类名
+      // defaultStyle: '', // 默认样式
+      autoInstall: true,
+      // jsx: 'react' // jsx支持
     }),
     createSvgIconsPlugin({
       // 指定需要缓存的图标文件夹

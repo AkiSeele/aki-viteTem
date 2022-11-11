@@ -1,7 +1,7 @@
 <!--案件上报-->
 <template>
   <div>
-    <div class="caseReportList btnQiu" style="height: calc(100vh - 90px);">
+    <div class="caseReportList btnQiu" style="height: calc(100vh - 65px - 58px);">
       <div class="boxO boxActive1" @click="onCommand(0)">
         <div class="boxT">
           <div class="boxT-title">
