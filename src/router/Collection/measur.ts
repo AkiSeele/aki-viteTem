@@ -54,7 +54,7 @@ const MeasurRouter = {
       path: "ormeas",
       name: "Ormeas",
       label: "一级测试列表",
-      component: () => import("@/views/measur/ermeas/info.vue"),
+      component: () => import("@/views/measur/ormeas.vue"),
       meta: {
         title: "一级测试列表",
       },
@@ -69,6 +69,25 @@ const MeasurRouter = {
         title: "测试页面详情",
       },
     },
+    {
+      path: "TS_note",
+      name: "TSDemo",
+      label: "ts练习",
+      component: () => import("@/views/measur/TS_demo.vue"),
+      meta: {
+        title: "ts练习",
+      },
+    },
+    {
+      path: "ecList",
+      name: "EcList",
+      label: "Echarts组件测试",
+      component: () => import("@/views/measur/ecList.vue"),
+      meta: {
+        title: "ts练习",
+      },
+    },
+    
   ],
 };
 

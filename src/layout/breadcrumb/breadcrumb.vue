@@ -3,6 +3,11 @@
   <div class="breadcrumb">
     <div class="breadcrumbBox">
       <div v-for="(item, index) in StoreLayout.routerList" :key="index" class="breadcrumbBox_one"
+        draggable="true"
+        @dragstart="handleDragStart($event, items)"
+        @dragover.prevent="handleDragOver($event, items)"
+        @dragenter="handleDragEnter($event, items)"
+        @dragend="handleDragEnd($event, items)"
         :class="{ 'textColorAvtice': StoreLayout.routerActive == index }">
         <span class="breadcrumbBox_one_text" @click="routerLiveTO(item, index)">{{ item.label }}</span>
         <n-icon class="breadcrumbBox_one_text" size="18" v-if="item.label !== '首页'" @click="delBread(item)">
@@ -94,7 +99,6 @@ const RigIconSelect = (value: string | number) => {
       })
     }
     
-    
   } else if (value == 2) {
     StoreLayout.routerList = [{
       "label": "首页",
@@ -146,6 +150,19 @@ function delBread(data: any) {
 
   // 删除指定
   StoreLayout.routerList.splice(index, 1)
+
+}
+
+function handleDragStart(e: DragEvent, items) {
+
+}
+function handleDragOver() {
+
+}
+function handleDragEnter() {
+
+}
+function handleDragEnd() {
 
 }
 </script>

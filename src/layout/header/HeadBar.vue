@@ -38,11 +38,11 @@ const options = [
   },
 ];
 
-if (StoreUser.name == "") {
+/* if (StoreUser.name == "") {
   console.log(StoreUser.name);
 
   router.push({ path: "/login" });
-}
+} */
 
 function tokenLoginAki(
   value: string | number | Array<string | number> | null,

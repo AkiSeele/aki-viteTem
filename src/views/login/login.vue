@@ -1,15 +1,12 @@
 <template>
-  <div v-if="StoreUser.name">
-    <img :src="StoreUser.imgUrl" style="width: 100px;height: 100px;border-radius: 50%;" />
-    <h1 class="test">{{ StoreUser.name }}</h1>
-    <div>{{ StoreUser.name }}</div>
-  </div>
-  <div>
-    <n-input v-model:value="loginForm.phone" placeholder="输入姓名" />
-    <n-input v-model:value="loginForm.password" type="password" show-password-on="mousedown"/>
+  <div class="login">
+    <div class="card_login">
+      <n-input v-model:value="loginForm.phone" placeholder="输入手机号" />
+      <n-input v-model:value="loginForm.password" type="password" show-password-on="mousedown" />
+      <n-button @click="Login">登录</n-button>
+    </div>
   </div>
 
-  <n-button @click="Login">登录</n-button>
 </template>
 
 <script setup lang="ts">
@@ -23,6 +20,7 @@ const loginForm = reactive({
 });
 
 const StoreLing = userAkiStore();
+
 const StoreUser = useUserStore();
 
 const loadingBar = useLoadingBar()
@@ -32,14 +30,15 @@ async function GetDateShang(data: LoginAki) {
   return await StoreLing.userLogin(data)
     .then((res) => {
       loadingBar.finish()
-      StoreUser.updateName(res.data.profile.nickname,res.data.profile.avatarUrl)
-      if(res.data.code === 200) {
-        router.replace({path: '/',})
+      StoreUser.updateName(res.data.profile.nickname, res.data.profile.avatarUrl)
+      if (res.data.code === 200) {
+        router.replace({ path: '/', })
       } else {
+        console.log("走的这里");
         // message.warning('...')
       }
     })
-    .then((err) => {
+    .catch((err) => {
       loadingBar.error()
       return err;
     });
@@ -55,3 +54,21 @@ interface LoginAki {
   password: string;
 }
 </script>
+
+<style scoped lang="scss">
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+
+  .card_login {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 300px;
+    height: 200px;
+  }
+}
+</style>

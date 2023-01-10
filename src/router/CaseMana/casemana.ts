@@ -34,8 +34,8 @@ const CaseManaRouter = {
       },
     },
     {
-      path: "caselist",
-      name: "CaseList",
+      path: "allcases",
+      name: "Allcases",
       label: "全部案件列表",
       component: () => import("@/views/casemana/allcases/allcases.vue"),
       meta: {
